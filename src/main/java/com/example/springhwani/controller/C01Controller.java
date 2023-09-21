@@ -21,4 +21,9 @@ public class C01Controller {
         System.out.println("C01Controller.method3");
     }
 
+    @RequestMapping("path5")
+    public void method5() {
+        System.out.println("C01Controller.method5");
+    }
+
 }
