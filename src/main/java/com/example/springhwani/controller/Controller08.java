@@ -1,5 +1,6 @@
 package com.example.springhwani.controller;
 
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,18 @@ public class Controller08 {
     public void method2(Model model) {
         model.addAttribute("propONE", "갇혀있어요 살려주세요");
         model.addAttribute("propTWO", "당근당근당근😭😭😭");
+
+    }
+
+    @RequestMapping("sub3")
+    public void method3(Model model) {
+        // view name : /main8/sub3
+        // /WEB-INF/jsp/main8/sub3.jsp
+        model.addAttribute("MyName", "Hwani");
+//        model.addAttribute("yourAddress", "seoul");
+        model.addAttribute("yourAddress", List.of(5,4));
+        model.addAttribute("herEmail", "ab@gmail.com");
+
 
     }
 }
