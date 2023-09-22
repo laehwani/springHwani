@@ -62,6 +62,16 @@
         <div>last : ${status.last}</div>
     </div>
 </c:forEach>
+<hr>
+<c:forEach items="${foodList}" var="food" varStatus="status">
+    <div class="box">
+        <div>${status.count} : ${status.current}</div>
+<%--        <div>index : ${status.index}</div>--%>
+<%--        <div>${status.current} </div>--%>
+<%--        <div>first : ${status.first}</div>--%>
+<%--        <div>last : ${status.last}</div>--%>
+    </div>
+</c:forEach>
 
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.example.springhwani.controller;
 
 import com.example.springhwani.domain.MyDto09;
 import com.example.springhwani.domain.MyDto10;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Controller;
@@ -44,7 +45,7 @@ public class Controller10 {
 
     @RequestMapping("sub3")
     public void method3(Model model) {
-        MyDto09 o1 = new MyDto09();
+        MyDto09 o1 = new MyDto09("");
         o1.setName("");
         o1.setId(3);
 //        o1.setFoods(List.of("pizza","hambur","milk"));
@@ -61,8 +62,22 @@ public class Controller10 {
 
     @RequestMapping("sub5")
     public void method4(Model model) {
-        model.addAttribute("foodList", List.of("햄", "버", "거", "임"));
+        model.addAttribute("foodList",
+            List.of("pizza", "milk", "water", "salad"));
         model.addAttribute("names", List.of("화니", "소미", "현이", "영이"));
     }
+
+    @RequestMapping("sub6")
+    public void method6(Model model) {
+        List<MyDto10> list = new ArrayList<>();
+        list.add(new MyDto10("31", "chi", "ckin", "닭", 02));
+        list.add(new MyDto10("32", "pi", "zza", "빵", 011));
+        list.add(new MyDto10("33", "ham", "burger", "버거", 010));
+        list.add(new MyDto10("34", "cow", "meat", "고기", 30));
+        list.add(new MyDto10("35", "pig", "meat", "꼬기", 40));
+
+        model.addAttribute("moving",list);
+    }
+
 }
 
