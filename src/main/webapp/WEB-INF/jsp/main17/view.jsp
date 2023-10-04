@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<div>
+<div>body
     <div>
         <a href="/main17/List">목록 보기</a>
     </div>
