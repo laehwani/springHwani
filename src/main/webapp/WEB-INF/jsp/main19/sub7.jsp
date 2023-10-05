@@ -9,10 +9,39 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <html>
 <head>
-    <title>Title</title>
-
-</head>
+    <head>
+        <title>Title</title>
+        <style>
+          table{
+            border-collapse: collapse;
+            border: 1px solid black;
+            width: 100%
+          }
+          th, td {
+            border: 1px solid black;
+            text-align: center;
+          }
+          th{
+            background-color: aquamarine;
+          }
+        </style>
+    </head>
 <body>
-
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Country</th>
+    </tr>
+    <c:forEach items="${suppliyList}" var="supplier">
+        <tr>
+            <td>${supplier.id}</td>
+            <td>${supplier.name}</td>
+            <td>${supplier.address}</td>
+            <td>${supplier.country}</td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>
