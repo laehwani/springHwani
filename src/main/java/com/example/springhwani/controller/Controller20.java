@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
@@ -250,7 +249,7 @@ public class Controller20 {
     }
 
     @GetMapping("sub11")
-    public String method11(@RequestParam("country") List<String> countryList, Model model) throws SQLException {
+    public void method11(@RequestParam("country") List<String> countryList, Model model) throws SQLException {
         String question = "";
         for (int i = 0; i < countryList.size(); i++) {
             question += "?";
@@ -259,14 +258,12 @@ public class Controller20 {
                 question += ", ";
             }
         }
-
         String sql = """
             SELECT SupplierID, SupplierName, Address, Country
             FROM suppliers
-            WHERE Country IN(""" + question +
+            WHERE Country IN(
             """
-            ) 
-            """;
+            +question+")";
 
         Connection connection = dataSource.getConnection();
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -289,7 +286,7 @@ public class Controller20 {
                 list.add(supplier);
             }
         }
-        model.addAttribute("countryList", list);
-        return "/main19/sub7";
+        model.addAttribute("supplyList", list);
+//        return "/main19/sub7";
     }
 }
