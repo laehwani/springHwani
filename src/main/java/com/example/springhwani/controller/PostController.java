@@ -20,7 +20,7 @@ public class PostController {
         postService.createPost(post);
 
         // 작성 결과 페이지로 이동
-        response.redirect("/result");
+
     }
 
     // 게시글 수정 요청 처리
@@ -35,7 +35,7 @@ public class PostController {
         postService.updatePost(post);
 
         // 수정 결과 페이지로 이동
-        response.redirect("/result");
+
     }
 
     // 게시글 삭제 요청 처리
@@ -46,6 +46,6 @@ public class PostController {
         postService.deletePost(postId);
 
         // 삭제 결과 페이지로 이동
-        response.redirect("/result");
+
     }
 }
