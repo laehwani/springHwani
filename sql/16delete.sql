@@ -2,8 +2,12 @@
 -- !! WHERE 절 꼭 작성 !! --
 
 
-SELECT * FROM employees WHERE LastName = '손';
-DELETE FROM employees WHERE LastName = '손';
+INSERT INTO employees (LastName, FirstName)
+VALUE ('김','두식');
+INSERT INTO employees (LastName, FirstName)
+VALUE ('김','용만');
+SELECT * FROM employees WHERE LastName = '김';
+DELETE FROM employees WHERE LastName = '김';
 
 -- 지우기 전 같은 where 절로 지울 레코드인지 확인!!!!
 
