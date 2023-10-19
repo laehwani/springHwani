@@ -8,12 +8,16 @@ import com.example.springhwani.domain.MyDto29;
 import com.example.springhwani.domain.MyDto30;
 import com.example.springhwani.domain.MyDto31;
 import com.example.springhwani.domain.MyDto32;
+import com.example.springhwani.domain.MyDto33Employee;
+import com.example.springhwani.domain.MyDto34Customer;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface MyDao4 {
@@ -84,5 +88,53 @@ public interface MyDao4 {
       VALUE (#{lastName}, #{firstName})
       """)
    int insert2(MyDto32 dto);
+
+   @Delete("""
+      DELETE FROM employees
+      WHERE EmployeeID = #{id}
+
+      """)
+   Integer delete1(Integer id);
+
+   @Delete("""
+      DELETE FROM products
+      WHERE ProductID = #{id}
+      """)
+   int delete2(Integer id);
+
+   @Select("""
+      SELECT EmployeeID id, LastName, FirstName, Photo, Notes, BirthDate
+      FROM employees
+      WHERE EmployeeID = #{id}
+      """)
+   MyDto33Employee select8(Integer id);
+
+   @Update("""
+      UPDATE employees
+      SET LastName = #{lastName},
+      FirstName = #{firstName},
+      Photo = #{photo},
+      BirthDate = #{birthDate},
+      Notes = #{notes}
+      WHERE EmployeeID = 1
+      """)
+   int update1(MyDto33Employee employee);
+
+   @Select("""
+SELECT CustomerID id, CustomerName name, Address, Country
+FROM customers
+WHERE CustomerID = #{id}
+""")
+   MyDto34Customer select9(Integer id);
+
+   @Update("""
+      UPDATE customers
+      SET CustomerID = #{id},
+      CustomerName = #{name},
+      Address = #{address},
+      Country = #{country}
+      WHERE CustomerID = #{id}
+      """)
+   int update2(MyDto34Customer customer);
 }
 

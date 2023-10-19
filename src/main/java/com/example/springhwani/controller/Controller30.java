@@ -1,7 +1,6 @@
 package com.example.springhwani.controller;
 
 import com.example.springhwani.dao.MyDao4;
-import com.example.springhwani.domain.MyDto24;
 import com.example.springhwani.domain.MyDto25;
 import com.example.springhwani.domain.MyDto26;
 import com.example.springhwani.domain.MyDto27;
@@ -10,14 +9,18 @@ import com.example.springhwani.domain.MyDto29;
 import com.example.springhwani.domain.MyDto30;
 import com.example.springhwani.domain.MyDto31;
 import com.example.springhwani.domain.MyDto32;
+import com.example.springhwani.domain.MyDto33Employee;
+import com.example.springhwani.domain.MyDto34Customer;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("main30")
@@ -99,4 +102,68 @@ public class Controller30 {
       int row = dao4.insert2(dto);
       System.out.println(row + "행이 입력됨");
    }
+
+
+   // DELETE : 지우는 법을 알아보자
+   @GetMapping("sub11")
+   public void method11(Integer id) {
+      Integer rows = dao4.delete1(id);
+      System.out.println(rows + "행이 지워짐");
+   }
+
+   // 3번 상품이 삭제되는 메소드 완성
+   @GetMapping("sub12")
+   public void method12(Integer id) {
+      int rows = dao4.delete2(id);
+      System.out.println(rows + "행이 지워짐");
+   }
+
+   // update : 테이블 수정을 알아보
+   @GetMapping("sub13")
+   public void method13(Integer id, Model model) {
+      // 직원을 조회
+      MyDto33Employee employee = dao4.select8(id);
+
+      model.addAttribute("employee", employee);
+   }
+
+   @PostMapping("sub14")
+   public String method14(MyDto33Employee employee, RedirectAttributes attr) {
+      int rows = dao4.update1(employee);
+
+      // 모델에 추가하기
+      if (rows == 1) {
+         attr.addFlashAttribute("message", "정보가 수정되었음");
+      } else {
+         attr.addFlashAttribute("message", "정보가 수정안됨");
+      }
+      // 쿼리 스트링을 추가하기
+      attr.addAttribute("id", employee.getId());
+
+      return "redirect:/main30/sub13";
+   }
+
+   // /main30/sub15?id=3
+   // 3번 고객 조회 -> view 로 포워딩
+   @GetMapping("sub15")
+   public void method15(Integer id, Model model) {
+      MyDto34Customer customer = dao4.select9(id);
+      model.addAttribute("customer", customer);
+   }
+
+   @PostMapping("sub16")
+   public String method16(MyDto34Customer customer, RedirectAttributes rttr) {
+      int rows = dao4.update2(customer);
+      if (rows == 1) {
+         rttr.addFlashAttribute("message", "정보가 수정되었음!");
+      } else {
+         rttr.addFlashAttribute("message", "정보가 수정안됨");
+      }
+      // 쿼리스트링에 넣자
+      // main30/sub?id=#{} 로 redirect 해라
+      rttr.addAttribute("id", customer.getId());
+
+      return "redirect:/main30/sub15";
+   }
+
 }
