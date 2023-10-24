@@ -228,5 +228,15 @@
       }
     </script>
 </div>
+<div>
+    <div>
+        <button onclick="ajax13()">버튼13</button>
+    </div>
+    <script>
+      function ajax13() {
+        axios.get("/main35/sub1")
+      }
+    </script>
+</div>
 </body>
 </html>
