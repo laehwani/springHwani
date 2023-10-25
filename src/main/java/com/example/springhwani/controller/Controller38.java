@@ -1,6 +1,6 @@
 package com.example.springhwani.controller;
 
-import com.example.springhwani.domain.MyDao8;
+import com.example.springhwani.dao.MyDao8;
 import com.example.springhwani.domain.MyDto33Employee;
 import com.example.springhwani.domain.MyDto45;
 import java.io.Serializable;

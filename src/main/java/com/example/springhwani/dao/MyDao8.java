@@ -1,5 +1,7 @@
-package com.example.springhwani.domain;
+package com.example.springhwani.dao;
 
+import com.example.springhwani.domain.MyDto33Employee;
+import com.example.springhwani.domain.MyDto45;
 import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -37,5 +39,6 @@ SELECT p.ProductID id,
    WHERE p.ProductID = #{id}
 """)
    MyDto45 selectByProductId(Integer id);
+
 }
 
